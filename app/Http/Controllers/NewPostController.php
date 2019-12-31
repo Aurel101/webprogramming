@@ -48,6 +48,5 @@ class NewPostController extends Controller
         $post->image=$path;
         $post->save();
         return redirect('profile');
-
     }
 }
