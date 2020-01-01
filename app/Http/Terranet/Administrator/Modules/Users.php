@@ -32,4 +32,9 @@ class Users extends Scaffolding implements Navigable, Filtrable, Editable, Valid
      * @var string
      */
     protected $model = User::class;
+
+    public function filters()
+    {
+        return $this->scaffoldFilters();
+    }
 }
