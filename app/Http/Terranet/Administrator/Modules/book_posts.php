@@ -53,32 +53,56 @@ class book_posts extends Scaffolding implements Navigable, Filtrable, Editable, 
         $filter1 = new Enum('state');
         $filter1->setOptions($arr1);
         $filter1->setQuery(function(Builder $builder,$value) use ($arr1){
-            return $builder->where('state','like',$arr1[$value]);
+            if($value != ''){
+                return $builder->where('state','like',$arr1[$value]);
+            }
+            else{
+                return $builder->where('state', 'like', '*');
+            }
         });
         $filter2= new Text('title');
         $filter2->setQuery(function (Builder $builder, $value) {
+            if ($value=='')
+                $value='*';
             return $builder->where('title','like',$value);
         });
         $filter3 = new Text('author');
         $filter3->setQuery(function (Builder $builder, $value) {
+            if ($value == '')
+                $value = '*';
             return $builder->where('author', 'like', $value);
         });
         $filter4 = new Text('publisher');
         $filter4->setQuery(function (Builder $builder, $value) {
+            if ($value == '')
+                $value = '*';
             return $builder->where('publisher', 'like', $value);
         });
         $filter5 = new DateRange('publishingDate');
         $filter5->setQuery(function (Builder $builder, $value) {
+            if (empty($value['from']))
+                $value['from']=date('Y-m-d',0);
+            if (empty($value['to']))
+                $value['to']= date('Y-m-d',time());
             return $builder->whereBetween('publishing_date',$value);
         });
         $arr2 = ['very good', 'good', 'ok', 'worn', 'bad'];
         $filter6 = new Enum('condition');
         $filter6->setOptions($arr2);
         $filter6->setQuery(function (Builder $builder, $value) use ($arr2) {
-            return $builder->where('state', 'like', $arr2[$value]);});
+
+            if ($value!=''){
+                return $builder->where('condition', 'like', $arr2[$value]);
+            }
+            else {
+                return $builder->where('condition', 'like', '*');
+            }
+        });
 
         $filter7 = new Text('User');
         $filter7->setQuery(function (Builder $builder, $value) {
+            if ($value == '')
+                $value = '*';
             return $builder->join('users as u','u.id','=','user_id')
             ->where('username', 'like', $value);
         });
