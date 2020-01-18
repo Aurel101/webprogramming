@@ -19,7 +19,7 @@
                 <div class='card-body row'>
                     @foreach ($posts as $post)
                         <div class='card-group col-12 col-md-6 col-xl-3 h-100 row'>
-                            <div class='h-75 col-12'><img class='img-fluid w-100' src='storage/{{$post->image}}'></div>
+                            <div class='h-75 col-12'><a href=""> <img class='img-fluid w-100' src='storage/{{$post->image}}'></a></div>
                         <div class='col-12'>{{$post->author}} : {{$post->title}}</div>
                         <div class='col-12'>{{$post->publisher}}</div>
                         <div class='col-6'>Price : </div>

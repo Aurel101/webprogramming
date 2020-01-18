@@ -18,6 +18,22 @@
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                             </div>
                         </div>
+                        <div class="form-group row justify-content-center">
+                            <div class="col-md-4">
+                                 <div class="captcha">
+                                    <span>{!! captcha_img() !!}</span>
+                                    <button type="button" class="btn btn-success"><i class="fa fa-refresh" id="refresh"></i></button>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <input id="captcha" type="text" class="form-control @error('captcha') is-invalid @enderror" placeholder="Enter Captcha" name="captcha">
+                                @error('captcha')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>Captcha is wrong!</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
