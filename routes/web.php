@@ -19,3 +19,5 @@ Route::get('/home', 'HomeController@show')->name('home');
 Route::get('/profile','ProfileController@show')->name('profile');
 Route::get('/newpost','NewPostController@show')->name('newpost');
 Route::post('/newpost', 'NewPostController@input')->name('newpost');
+Route::get('books/{id}','PostsController@show');
+Route::post('books/{id}','PostsController@compare');

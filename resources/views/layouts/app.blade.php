@@ -62,7 +62,7 @@
                                         @csrf
                                     </form>
                                     <a class="dropdown-item" href="profile">
-                                        profile
+                                        Profile
                                     </a>
                                 </div>
                             </li>
@@ -76,5 +76,6 @@
             @yield('content')
         </main>
     </div>
+    <script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>

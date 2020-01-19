@@ -34,7 +34,8 @@ class NewPostController extends Controller
         ]);
         $path='default.png';
         if ($request->file('image')){
-            $path = $request->file('image')->storeAs('avatars',Auth::id().'_'.time());
+            $path = Auth::id() . '_' . time() . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('public',$path);
         }
         $post = new Book_post;
         $post->user_id = Auth::id();

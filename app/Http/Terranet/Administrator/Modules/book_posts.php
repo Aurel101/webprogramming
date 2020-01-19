@@ -17,10 +17,12 @@ use Terranet\Administrator\Traits\Module\HasSortable;
 use Terranet\Administrator\Traits\Module\ValidatesForm;
 use App\Book_post;
 use Terranet\Administrator\Field\BelongsTo;
+use Terranet\Administrator\Field\Number;
 use Terranet\Administrator\Filter\Enum;
 use Terranet\Administrator\Filter\Text;
 use Terranet\Administrator\Filter\DateRange;
 use Illuminate\Database\Eloquent\Builder;
+use Terranet\Administrator\Field\Translatable;
 
 /**
  * Administrator Resource book_posts
@@ -111,6 +113,13 @@ class book_posts extends Scaffolding implements Navigable, Filtrable, Editable, 
     }
     public function scopes(){
         return $this->scaffoldScopes();
+    }
+    public function form(){
+        return $this->scaffoldForm()
+        ->update('price',function(Number $field){
+            $field->step(0.01);
+            return $field;
+        });
     }
 
 }

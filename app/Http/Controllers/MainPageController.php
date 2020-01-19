@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class MainPageController extends Controller
 {
     public function show(){
-        $posts = DB::table('book_posts')->where('state', '=', 'accepted')->oldest()->paginate(12);
+        $posts = DB::table('book_posts')->where('state', '=', 'accepted')->oldest()->paginate(4);
         return view('main',['posts'=>$posts]);
     }
 }
