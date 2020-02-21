@@ -15,15 +15,13 @@ use Terranet\Administrator\Traits\Module\HasFilters;
 use Terranet\Administrator\Traits\Module\HasForm;
 use Terranet\Administrator\Traits\Module\HasSortable;
 use Terranet\Administrator\Traits\Module\ValidatesForm;
-use Terranet\Administrator\Field\Number;
-use App\Order;
 
 /**
- * Administrator Resource Orders
+ * Administrator Resource Shipping_addresses
  *
  * @package Terranet\Administrator
  */
-class Orders extends Scaffolding implements Navigable, Filtrable, Editable, Validable, Sortable, Exportable
+class Shipping_addresses extends Scaffolding implements Navigable, Filtrable, Editable, Validable, Sortable, Exportable
 {
     use HasFilters, HasForm, HasSortable, ValidatesForm, AllowFormats, AllowsNavigation;
 
@@ -32,14 +30,5 @@ class Orders extends Scaffolding implements Navigable, Filtrable, Editable, Vali
      *
      * @var string
      */
-    protected $model = Order::class;
-
-    public function form()
-    {
-        return $this->scaffoldForm()
-            ->update('price', function (Number $field) {
-                $field->step(0.01);
-                return $field;
-            });
-    }
+    protected $model = 'App\\Shipping_address';
 }

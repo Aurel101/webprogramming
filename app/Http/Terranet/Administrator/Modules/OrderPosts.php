@@ -16,14 +16,13 @@ use Terranet\Administrator\Traits\Module\HasForm;
 use Terranet\Administrator\Traits\Module\HasSortable;
 use Terranet\Administrator\Traits\Module\ValidatesForm;
 use Terranet\Administrator\Field\Number;
-use App\Order;
 
 /**
- * Administrator Resource Orders
+ * Administrator Resource OrderPosts
  *
  * @package Terranet\Administrator
  */
-class Orders extends Scaffolding implements Navigable, Filtrable, Editable, Validable, Sortable, Exportable
+class OrderPosts extends Scaffolding implements Navigable, Filtrable, Editable, Validable, Sortable, Exportable
 {
     use HasFilters, HasForm, HasSortable, ValidatesForm, AllowFormats, AllowsNavigation;
 
@@ -32,7 +31,7 @@ class Orders extends Scaffolding implements Navigable, Filtrable, Editable, Vali
      *
      * @var string
      */
-    protected $model = Order::class;
+    protected $model = 'App\\OrderPost';
 
     public function form()
     {

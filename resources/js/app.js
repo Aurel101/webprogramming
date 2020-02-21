@@ -12,5 +12,7 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./components/Example');
-require(',/components/compareButton')
+require('./components/compareButton');
+require('./components/compareMain');
+require('./components/cartButton');
+require('./components/cartMain');

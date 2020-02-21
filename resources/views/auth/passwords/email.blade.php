@@ -22,7 +22,6 @@
                             <div class="col-md-4">
                                  <div class="captcha">
                                     <span>{!! captcha_img() !!}</span>
-                                    <button type="button" class="btn btn-success"><i class="fa fa-refresh" id="refresh"></i></button>
                                 </div>
                             </div>
                             <div class="col-md-4">

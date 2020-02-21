@@ -5,15 +5,18 @@
         <div class="col-md-8">
             <div class="card">
             <div class="card-header"><div class="pull-left">{{$post->author." : ".$post->title}}</div>
-                <div class='pull-right' id='compareButton'><button></div>
+            <div class='pull-right' id='compareButton' data-post="{{$post->id}}"></div>
             </div>
 
             <div class="card-body row">
                 <div class="col-12">
-                    <div class='pull-left'><img class='img-fluid' style="object-fit:cover;width:300px;height:300px" alt="bookimage" src={{asset('storage/'.$post->image)}}></div>
+                    <div class='pull-left'><a href="books/{{$post->id}}"><img class='img-fluid' style="object-fit:cover;width:300px;height:300px" alt="bookimage" src={{asset('storage/'.$post->image)}}></a></div>
                     <div class='pull-right'><div class='d-block'>Author: {{$post->author}}</div>
                     <div class='d-block'>Title: {{$post->title}}</div>
                     <div class='d-block font-weight-bolder' style="font-size:2rem">Price : {{$post->price}}$</div>
+                    @if (Auth::id() != $post->user_id)
+                    <div class='d-block cartButton' data-id="{{$post->id}}"></div>
+                    @endif
                     </div>
                 </div>
             <div class='col-12'>Publisher : {{$post->publisher}}</div>

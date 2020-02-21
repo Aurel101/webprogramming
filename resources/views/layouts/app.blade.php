@@ -10,17 +10,19 @@
     <title>{{ 'Usedbooks' }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/background.css')}}" rel="stylesheet">
+    <!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style='font-size:1.2em'>
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand bold" href="{{ url('/') }}" style="font-size:1.5em">
                     {{ 'Usedbooks' }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -36,6 +38,16 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <li class='nav-item'>
+                                <a class="nav-link" href="{{route('compare')}}">
+                                        Compare
+                                </a>
+                            </li>
+                            <li class='nav-item'>
+                                <a class='nav-link' href="cart">
+                                <i class="fa fa-shopping-cart"></i> <sup id='cartNumber'></sup>
+                                </a>
+                            </li>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -45,9 +57,15 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
+
                         @else
+                            <li class="nav-item">
+                            <a class="nav-link" href="{{route('home')}}">
+                                <i class="fa fa-home"></i>
+                            </a>
+                            </li>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" data-name='{{ Auth::user()->username }}' class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->username }} <span class="caret"></span>
                                 </a>
 
@@ -75,7 +93,23 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <script>
+        window.addEventListener('load',function() {
+            let cart=[];
+            let username = ''
+            if (document.getElementById('navbarDropdown')){
+                username = document.getElementById('navbarDropdown').getAttribute('data-name');
+            }
+            if(localStorage.getItem(username+'cart'))
+                cart = JSON.parse(localStorage.getItem(username+'cart'));
+            globalcart(cart);
+        })
+        function globalcart(cart) {
+            let i = cart.length;
+            $('#cartNumber').html(i);
+        }
+
+        </script>
     </div>
-    <script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>

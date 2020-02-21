@@ -9,12 +9,13 @@
                 <div class="card-header text-center">Books</div>
                 <div class='card-body row justify-content-center'>
                     @foreach ($posts as $post)
-                        <div class='card-group col-12 col-md-6 col-xl-3 h-100 row'>
-                        <div class='h-75 col-12'><a href="books/{{$post->id}}"><img class='img-fluid' style="object-fit:cover;width:300px;height:300px;" src='storage/{{$post->image}}'></a></div>
-                        <div class='col-12'>{{$post->author}} : {{$post->title}}</div>
-                        <div class='col-12'>{{$post->publisher}}</div>
-                        <div class='col-6'>Price : </div>
-                        <div class='col-6'>{{$post->price}}$</div>
+                        <div class='card col-12 col-md-6 col-xl-3 p-3 justify-content-center' >
+                        <div class='card-img-top'><a href="books/{{$post->id}}"><img class='img-fluid' style="object-fit:cover;width:100%;height:300px;" src='storage/{{$post->image}}'></a></div>
+                        <div class='card-title'>{{$post->author}} : {{$post->title}}</div>
+                        <div class='card-text'>{{$post->publisher}}</div><div class="card-text">
+                        <div class='pull-left'>Price : </div>
+                        <div class='pull-right'>{{$post->price}}$</div></div>
+                        <div class='cartButton' data-id="{{$post->id}}"></div>
                         </div>
                     @endforeach
                     <div class='card-footer row w-100 justify-content-center '><div class="col-1 text-center">{{$posts->links()}}</div></div>
