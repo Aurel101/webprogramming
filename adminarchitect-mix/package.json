@@ -27,7 +27,7 @@
         "less": "^3.9.0",
         "less-loader": "^4.1.0",
         "lodash": "^4.17.11",
-        "tinymce": "^4.6.4",
+        "tinymce": "^4.9.10",
         "vue": "^2.5.7",
         "vue-clip": "^1.0.0",
         "vue-filepond": "^5.1.0",
