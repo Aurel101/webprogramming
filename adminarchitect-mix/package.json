@@ -26,7 +26,7 @@
         "laravel-mix": "^2.1",
         "less": "^3.9.0",
         "less-loader": "^4.1.0",
-        "lodash": "^4.17.11",
+        "lodash": "^4.17.19",
         "tinymce": "^4.6.4",
         "vue": "^2.5.7",
         "vue-clip": "^1.0.0",
